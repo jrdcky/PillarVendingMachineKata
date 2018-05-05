@@ -15,6 +15,12 @@ class CoinAcceptorTest {
         CoinAcceptor coinAcceptor = new CoinAcceptor();
         assertTrue(coinAcceptor.insertCoin(Coin.DIME.getWeight(), Coin.DIME.getDiameter(), Coin.DIME.getWidth()));
     }
-    
+
+    @Test
+    void insertNickelReturnsTrue() {
+        CoinAcceptor coinAcceptor = new CoinAcceptor();
+        assertTrue(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.NICKEL.getWidth()));
+    }
+
 
 }

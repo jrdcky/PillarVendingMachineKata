@@ -1,6 +1,7 @@
 public enum Coin {
     QUARTER (5.670, .955, .069),
-    DIME (2.268, .705, .053);
+    DIME (2.268, .705, .053),
+    NICKEL (5 ,.835, .077);
 
     private final double weight;
     private final double diameter;
