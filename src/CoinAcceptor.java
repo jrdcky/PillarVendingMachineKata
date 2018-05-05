@@ -12,7 +12,7 @@ public class CoinAcceptor {
         return false;
     }
 
-    private double getValueOfCoin(Coin coin) {
+    public double getValueOfCoin(Coin coin) {
         switch(coin) {
             case QUARTER:
                 return .25;
