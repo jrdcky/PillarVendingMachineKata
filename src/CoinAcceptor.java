@@ -9,4 +9,8 @@ public class CoinAcceptor {
         }
         return false;
     }
+
+    public double getInsertedValue() {
+        return .25;
+    }
 }

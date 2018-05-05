@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -9,7 +10,7 @@ public class CoinAcceptorTest {
     private CoinAcceptor coinAcceptor;
 
     @Before
-    private void setUp() {
+    public void setUp() {
         coinAcceptor = new CoinAcceptor();
     }
 
@@ -31,6 +32,12 @@ public class CoinAcceptorTest {
     @Test
     public void insertPennyOrOtherReturnsFalse() {
         assertFalse(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.QUARTER.getWidth()));
+    }
+
+    @Test
+    public void getInsertedValueAfterQuarter() {
+        assertTrue(coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth()));
+        assertEquals(.25, coinAcceptor.getInsertedValue());
     }
 
 }
