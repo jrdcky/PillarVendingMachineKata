@@ -1,8 +1,8 @@
 public class StockKeeper {
 
-    private static final double POP_PRICE = 1.00;
-    private static final double CANDY_PRICE = .65;
-    private static final double CHIPS_PRICE = .50;
+    static final double POP_PRICE = 1.00;
+    static final double CANDY_PRICE = .65;
+    static final double CHIPS_PRICE = .50;
     private int pop;
     private int chips;
     private int candy;
