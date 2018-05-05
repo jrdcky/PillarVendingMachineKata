@@ -40,4 +40,16 @@ public class CoinAcceptorTest {
         assertEquals(.25, coinAcceptor.getInsertedValue());
     }
 
+    @Test
+    public void getInsertedValueAfterDime() {
+        assertTrue(coinAcceptor.insertCoin(Coin.DIME.getWeight(), Coin.DIME.getDiameter(), Coin.DIME.getWidth()));
+        assertEquals(.1, coinAcceptor.getInsertedValue());
+    }
+
+    @Test
+    public void getInsertedValueAfterNickel() {
+        assertTrue(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.NICKEL.getWidth()));
+        assertEquals(.05, coinAcceptor.getInsertedValue());
+    }
+
 }
