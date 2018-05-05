@@ -5,7 +5,7 @@ public class ChangeDispenser {
         this.coinAcceptor = coinAcceptor;
     }
 
-    public double dispenseChange() {
-        return .25;
+    public Coin[] dispenseChange (double amount) {
+        return new Coin[] {Coin.QUARTER};
     }
 }
