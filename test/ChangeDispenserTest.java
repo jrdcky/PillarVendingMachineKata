@@ -17,8 +17,21 @@ public class ChangeDispenserTest {
     }
 
     private void addQuartersToCoinAcceptor(int quarters) {
-        for(int i = 0; i < quarters; i++) {
+        for (int i = 0; i < quarters; i++) {
             coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
+        }
+    }
+
+    private boolean areListsEqual(List<Coin> list1, List<Coin> list2) {
+        if (list1.size() == list2.size()) {
+            for (int i = 0; i < list1.size(); i++) {
+                if (list1.get(i) != list2.get(i)) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -30,17 +43,16 @@ public class ChangeDispenserTest {
         changeExpected.add(Coin.QUARTER);
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.25);
 
-        assertTrue(changeExpected.get(0) == changeDispensed.get(0));
+        assertTrue(areListsEqual(changeExpected, changeDispensed));
     }
 
     @Test
     public void inserted50CentsDispense75CentsReturnsEmpty() {
-        addQuartersToCoinAcceptor(3);
+        addQuartersToCoinAcceptor(2);
         changeDispenser = new ChangeDispenser(coinAcceptor);
-        List<Coin> changeExpected = new ArrayList<>();
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.75);
 
-        assertTrue(changeExpected.equals(changeDispensed));
+        assertTrue(changeDispensed.isEmpty());
     }
 
     @Test
@@ -51,7 +63,7 @@ public class ChangeDispenserTest {
         changeExpected.add(Coin.DIME);
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.10);
 
-        assertTrue(changeExpected.equals(changeDispensed));
+        assertTrue(areListsEqual(changeExpected, changeDispensed));
     }
 
 }
