@@ -14,21 +14,21 @@ public class StockKeeper {
     }
 
     public boolean isPopInStock() {
-        if (pop > 1){
+        if (pop >= 1){
             return true;
         }
         return false;
     }
 
     public boolean isChipsInStock() {
-        if (chips > 1){
+        if (chips >= 1){
             return true;
         }
         return false;
     }
 
     public boolean isCandyInStock() {
-        if (candy > 1){
+        if (candy >= 1){
             return true;
         }
         return false;
@@ -47,14 +47,26 @@ public class StockKeeper {
     }
 
     public boolean buyPop() {
-        return true;
+        if (isPopInStock()) {
+            pop -= 1;
+            return true;
+        }
+        return false;
     }
 
     public boolean buyCandy() {
-        return true;
+        if (isCandyInStock()) {
+            candy -= 1;
+            return true;
+        }
+        return false;
     }
 
     public boolean buyChips() {
-        return true;
+        if (isChipsInStock()) {
+            chips -= 1;
+            return true;
+        }
+        return false;
     }
 }
