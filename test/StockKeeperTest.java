@@ -19,4 +19,12 @@ public class StockKeeperTest {
         assertFalse(stockKeeper.isChipsInStock());
         assertFalse(stockKeeper.isCandyInStock());
     }
+
+    @Test
+    public void whenProductAvailableBuyReturnsTrue() {
+        StockKeeper stockKeeper = new StockKeeper(1,10,20);
+        assertTrue(stockKeeper.buyPop());
+        assertTrue(stockKeeper.buyChips());
+        assertTrue(stockKeeper.buyCandy());
+    }
 }

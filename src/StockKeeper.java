@@ -1,5 +1,8 @@
 public class StockKeeper {
 
+    private static final double POP_PRICE = 1.00;
+    private static final double CANDY_PRICE = .65;
+    private static final double CHIPS_PRICE = .50;
     private int pop;
     private int chips;
     private int candy;
@@ -29,5 +32,29 @@ public class StockKeeper {
             return true;
         }
         return false;
+    }
+
+    public double getPopPrice () {
+        return POP_PRICE;
+    }
+
+    public double getCandyPrice() {
+        return CANDY_PRICE;
+    }
+
+    public double getChipsPrice() {
+        return CHIPS_PRICE;
+    }
+
+    public boolean buyPop() {
+        return true;
+    }
+
+    public boolean buyCandy() {
+        return true;
+    }
+
+    public boolean buyChips() {
+        return true;
     }
 }
