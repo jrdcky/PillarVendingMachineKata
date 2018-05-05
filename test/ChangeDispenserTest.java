@@ -20,4 +20,18 @@ public class ChangeDispenserTest {
         assertTrue(Arrays.equals(changeExpected, changeDispensed));
     }
 
+    @Test
+    public void inserted50CentsDispense75Cents() {
+        CoinAcceptor coinAcceptor = new CoinAcceptor();
+        ChangeDispenser changeDispenser;
+        for(int i = 0; i < 2; i++) {
+            coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
+        }
+        changeDispenser = new ChangeDispenser(coinAcceptor);
+        Coin changeExpected[] = {};
+        Coin changeDispensed[] = changeDispenser.dispenseChange(.75);
+
+        assertTrue(Arrays.equals(changeExpected, changeDispensed));
+    }
+
 }
