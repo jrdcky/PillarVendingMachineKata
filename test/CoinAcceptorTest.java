@@ -9,4 +9,12 @@ class CoinAcceptorTest {
         CoinAcceptor coinAcceptor = new CoinAcceptor();
         assertTrue(coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth()));
     }
+
+    @Test
+    void insertDimeReturnsTrue() {
+        CoinAcceptor coinAcceptor = new CoinAcceptor();
+        assertTrue(coinAcceptor.insertCoin(Coin.DIME.getWeight(), Coin.DIME.getDiameter(), Coin.DIME.getWidth()));
+    }
+    
+
 }
