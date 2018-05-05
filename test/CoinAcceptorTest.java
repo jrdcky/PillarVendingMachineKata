@@ -1,32 +1,36 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
-class CoinAcceptorTest {
+public class CoinAcceptorTest {
+
+    private CoinAcceptor coinAcceptor;
+
+    @Before
+    private void setUp() {
+        coinAcceptor = new CoinAcceptor();
+    }
 
     @Test
-    void insertQuarterReturnsTrue() {
-        CoinAcceptor coinAcceptor = new CoinAcceptor();
+    public void insertQuarterReturnsTrue() {
         assertTrue(coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth()));
     }
 
     @Test
-    void insertDimeReturnsTrue() {
-        CoinAcceptor coinAcceptor = new CoinAcceptor();
+    public void insertDimeReturnsTrue() {
         assertTrue(coinAcceptor.insertCoin(Coin.DIME.getWeight(), Coin.DIME.getDiameter(), Coin.DIME.getWidth()));
     }
 
     @Test
-    void insertNickelReturnsTrue() {
-        CoinAcceptor coinAcceptor = new CoinAcceptor();
+    public void insertNickelReturnsTrue() {
         assertTrue(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.NICKEL.getWidth()));
     }
 
     @Test
-    void insertPennyOrOtherReturnsFalse() {
-        CoinAcceptor coinAcceptor = new CoinAcceptor();
+    public void insertPennyOrOtherReturnsFalse() {
         assertFalse(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.QUARTER.getWidth()));
     }
-
 
 }
