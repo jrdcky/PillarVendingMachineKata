@@ -2,7 +2,6 @@ import java.util.List;
 
 public class VendingMachineController {
 
-    public enum Product {POP, CHIPS, CANDY;}
     private Display display;
     private StockKeeper stockKeeper;
     private CoinAcceptor coinAcceptor;
