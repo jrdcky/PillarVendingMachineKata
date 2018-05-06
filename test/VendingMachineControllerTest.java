@@ -8,7 +8,7 @@ public class VendingMachineControllerTest {
     public void selectProductWithNoMoneyReturnsPrice() {
         VendingMachineController vendingMachineController = new VendingMachineController();
         assertFalse(vendingMachineController.selectPop());
-        assertEquals("$1.00", vendingMachineController.getDisplay());
+        assertEquals("$1.00", vendingMachineController.getDisplayPrompt());
         assertFalse(vendingMachineController.selectChips());
     }
 

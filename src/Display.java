@@ -9,14 +9,18 @@ public class Display {
 
     public String getPrompt(double amountInserted) {
         if(amountInserted == 0) {
-            if(requireExactChange) {
-                return EXACT_CHANGE_ONLY;
-            }
-            else {
-                return INSERT_COIN;
-            }
+            return getPromptNoMoneyInserted();
         }
         return "$" + String.valueOf(amountInserted);
+    }
+
+    private String getPromptNoMoneyInserted() {
+        if(requireExactChange) {
+            return EXACT_CHANGE_ONLY;
+        }
+        else {
+            return INSERT_COIN;
+        }
     }
 
     public void setRequireExactChange(boolean requireExactChange) {

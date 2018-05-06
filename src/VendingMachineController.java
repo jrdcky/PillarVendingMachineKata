@@ -13,7 +13,7 @@ public class VendingMachineController {
         return false;
     }
 
-    public String getDisplay() {
+    public String getDisplayPrompt() {
         return "$1.00";
     }
 
