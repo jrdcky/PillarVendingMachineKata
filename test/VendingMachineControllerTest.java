@@ -1,12 +1,25 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class VendingMachineControllerTest {
 
+    private VendingMachineController vendingMachineController;
+
+    @Before
+    public void setUp() {
+        vendingMachineController = new VendingMachineController();
+    }
+
+    private void addQuartersToCoinAcceptor(int quarters) {
+        for (int i = 0; i < quarters; i++) {
+            vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
+        }
+    }
+
     @Test
     public void selectProductWithNoMoneyReturnsPrice() {
-        VendingMachineController vendingMachineController = new VendingMachineController();
         assertFalse(vendingMachineController.selectPop());
         assertEquals("$1.00", vendingMachineController.getDisplayPrompt());
         assertFalse(vendingMachineController.selectChips());
@@ -17,11 +30,7 @@ public class VendingMachineControllerTest {
 
     @Test
     public void selectProductWithEnoughMoneyReturnsTrue() {
-        VendingMachineController vendingMachineController = new VendingMachineController();
-        vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
-        vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
-        vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
-        vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
+        addQuartersToCoinAcceptor(4);
         assertTrue(vendingMachineController.selectPop());
     }
 
