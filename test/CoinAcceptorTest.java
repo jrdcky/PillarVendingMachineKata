@@ -11,7 +11,7 @@ public class CoinAcceptorTest {
 
     @Before
     public void setUp() {
-        coinAcceptor = new CoinAcceptor();
+        coinAcceptor = new CoinAcceptor(100, 100, 100);
     }
 
     @Test
@@ -37,6 +37,11 @@ public class CoinAcceptorTest {
         Coin badCoin = new Coin(1, .3, .098);
         assertFalse(coinAcceptor.insertCoin(badCoin));
         assertEquals(0.0, coinAcceptor.getInsertedValue());
+    }
+
+    @Test
+    public void whenNotLowOnChangeThenDoNotNeedExactChange() {
+        assertFalse(coinAcceptor.getNeedExactChange());
     }
 
 }

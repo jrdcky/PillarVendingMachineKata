@@ -4,6 +4,15 @@ import java.util.List;
 public class CoinAcceptor {
     private double insertedValue = 0;
     private List<Coin> stagedCoins = new ArrayList<>();
+    private int quarters;
+    private int dimes;
+    private int nickels;
+
+    public CoinAcceptor(int quarters, int dimes, int nickels) {
+        this.quarters = quarters;
+        this.dimes = dimes;
+        this.nickels = nickels;
+    }
 
     public boolean insertCoin(Coin coin) {
         double value = getValueOfCoin(coin);
@@ -46,5 +55,9 @@ public class CoinAcceptor {
 
     public void setInsertedValue(double insertedValue) {
         this.insertedValue = insertedValue;
+    }
+
+    public boolean getNeedExactChange() {
+        return false;
     }
 }

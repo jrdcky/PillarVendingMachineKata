@@ -12,7 +12,7 @@ public class VendingMachineController {
     public VendingMachineController(int pop, int chips, int candy) {
         returnSlot = new ArrayList<>();
         display = new Display(false);
-        coinAcceptor = new CoinAcceptor();
+        coinAcceptor = new CoinAcceptor(100, 100, 100);
         changeDispenser = new ChangeDispenser(coinAcceptor);
         stockKeeper = new StockKeeper(pop, chips, candy);
     }

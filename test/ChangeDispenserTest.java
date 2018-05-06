@@ -13,7 +13,7 @@ public class ChangeDispenserTest {
 
     @Before
     public void setUp() {
-        coinAcceptor = new CoinAcceptor();
+        coinAcceptor = new CoinAcceptor(100, 100, 100);
     }
 
     private void addQuartersToCoinAcceptor(int quarters) {
