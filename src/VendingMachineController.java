@@ -22,7 +22,12 @@ public class VendingMachineController {
 
     public boolean selectChips() {
         display.selectProduct(stockKeeper.getChipsPrice());
-        return false;
+        if(coinAcceptor.getInsertedValue() >= stockKeeper.getChipsPrice()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean selectCandy() {
