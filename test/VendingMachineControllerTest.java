@@ -9,6 +9,7 @@ public class VendingMachineControllerTest {
         VendingMachineController vendingMachineController = new VendingMachineController();
         assertFalse(vendingMachineController.selectPop());
         assertEquals("$1.00", vendingMachineController.getDisplay());
+        assertFalse(vendingMachineController.selectChips());
     }
 
 }

@@ -9,6 +9,10 @@ public class VendingMachineController {
         return false;
     }
 
+    public boolean selectChips() {
+        return false;
+    }
+
     public String getDisplay() {
         return "$1.00";
     }
