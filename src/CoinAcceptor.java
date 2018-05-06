@@ -60,10 +60,7 @@ public class CoinAcceptor {
     }
 
     public boolean getNeedExactChange() {
-        if(totalMoneyInMachine() <  MAX_INSERTED_AMOUNT - CHEAPEST_PRODUCT_PRICE) {
-            return true;
-        }
-        return false;
+        return totalMoneyInMachine() <  MAX_INSERTED_AMOUNT - CHEAPEST_PRODUCT_PRICE;
     }
 
     private double totalMoneyInMachine() {
