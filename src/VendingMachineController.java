@@ -32,7 +32,7 @@ public class VendingMachineController {
     }
 
     public String getDisplayPrompt() {
-        return display.getPrompt(0);
+        return display.getPrompt(coinAcceptor.getInsertedValue());
     }
 
     public void insertCoin(Coin coin) {

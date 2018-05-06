@@ -69,4 +69,10 @@ public class VendingMachineControllerTest {
         assertTrue(changeCollected.contains(Coin.NICKEL));
     }
 
+    @Test
+    public void whenCoinInsertedThenDisplayShowsAmount() {
+        addCoinsToCoinAcceptor(1, Coin.QUARTER);
+        assertEquals("$0.25", vendingMachineController.getDisplayPrompt());
+    }
+
 }
