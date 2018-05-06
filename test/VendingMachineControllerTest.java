@@ -16,7 +16,7 @@ public class VendingMachineControllerTest {
 
     private void addQuartersToCoinAcceptor(int quarters) {
         for (int i = 0; i < quarters; i++) {
-            vendingMachineController.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
+            vendingMachineController.insertCoin(Coin.QUARTER);
         }
     }
 
@@ -47,8 +47,10 @@ public class VendingMachineControllerTest {
         List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
         assertEquals(1, changeCollected.size());
         assertEquals(Coin.QUARTER, changeCollected.get(0));
+    }
 
-
+    @Test
+    public void insertBadCoinGetsReturned() {
     }
 
 }

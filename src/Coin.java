@@ -1,11 +1,11 @@
-public enum Coin {
-    QUARTER (5.670, .955, .069),
-    DIME (2.268, .705, .053),
-    NICKEL (5 ,.835, .077);
+public class Coin {
+    public static final Coin QUARTER = new Coin(5.670, .955, .069);
+    public static final Coin DIME = new Coin(2.268, .705, .053);
+    public static final Coin NICKEL = new Coin(5 ,.835, .077);
 
-    private final double weight;
-    private final double diameter;
-    private final double width;
+    private double weight;
+    private double diameter;
+    private double width;
 
     Coin(double weight, double diameter, double width) {
         this.weight = weight;

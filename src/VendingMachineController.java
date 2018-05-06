@@ -31,8 +31,8 @@ public class VendingMachineController {
         return display.getPrompt(0);
     }
 
-    public void insertCoin(double weight, double diameter, double width) {
-        coinAcceptor.insertCoin(weight, diameter, width);
+    public void insertCoin(Coin coin) {
+        coinAcceptor.insertCoin(coin);
     }
 
     public List<Coin> getCoinsFromReturnSlot() {

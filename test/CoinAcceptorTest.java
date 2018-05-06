@@ -16,25 +16,26 @@ public class CoinAcceptorTest {
 
     @Test
     public void insertQuarterReturnsTrueValue25Cents() {
-        assertTrue(coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth()));
+        assertTrue(coinAcceptor.insertCoin(Coin.QUARTER));
         assertEquals(.25, coinAcceptor.getInsertedValue());
     }
 
     @Test
     public void insertDimeReturnsTrueValue10Cents() {
-        assertTrue(coinAcceptor.insertCoin(Coin.DIME.getWeight(), Coin.DIME.getDiameter(), Coin.DIME.getWidth()));
+        assertTrue(coinAcceptor.insertCoin(Coin.DIME));
         assertEquals(.1, coinAcceptor.getInsertedValue());
     }
 
     @Test
     public void insertNickelReturnsTrueValue5Cents() {
-        assertTrue(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.NICKEL.getWidth()));
+        assertTrue(coinAcceptor.insertCoin(Coin.NICKEL));
         assertEquals(.05, coinAcceptor.getInsertedValue());
     }
 
     @Test
     public void insertPennyOrOtherReturnsFalseHasNoValue() {
-        assertFalse(coinAcceptor.insertCoin(Coin.NICKEL.getWeight(), Coin.NICKEL.getDiameter(), Coin.QUARTER.getWidth()));
+        Coin badCoin = new Coin(1, .3, .098);
+        assertFalse(coinAcceptor.insertCoin(badCoin));
         assertEquals(0.0, coinAcceptor.getInsertedValue());
     }
 

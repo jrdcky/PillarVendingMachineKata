@@ -18,20 +18,7 @@ public class ChangeDispenserTest {
 
     private void addQuartersToCoinAcceptor(int quarters) {
         for (int i = 0; i < quarters; i++) {
-            coinAcceptor.insertCoin(Coin.QUARTER.getWeight(), Coin.QUARTER.getDiameter(), Coin.QUARTER.getWidth());
-        }
-    }
-
-    private boolean areListsEqual(List<Coin> list1, List<Coin> list2) {
-        if (list1.size() == list2.size()) {
-            for (int i = 0; i < list1.size(); i++) {
-                if (list1.get(i) != list2.get(i)) {
-                    return false;
-                }
-            }
-            return true;
-        } else {
-            return false;
+            coinAcceptor.insertCoin(Coin.QUARTER);
         }
     }
 
@@ -43,7 +30,7 @@ public class ChangeDispenserTest {
         changeExpected.add(Coin.QUARTER);
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.25);
 
-        assertTrue(areListsEqual(changeExpected, changeDispensed));
+        assertTrue(changeExpected.equals(changeDispensed));
     }
 
     @Test
@@ -63,7 +50,7 @@ public class ChangeDispenserTest {
         changeExpected.add(Coin.DIME);
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.10);
 
-        assertTrue(areListsEqual(changeExpected, changeDispensed));
+        assertTrue(changeExpected.equals(changeDispensed));
     }
 
 }
