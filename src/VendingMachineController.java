@@ -32,7 +32,12 @@ public class VendingMachineController {
 
     public boolean selectCandy() {
         display.selectProduct(stockKeeper.getCandyPrice());
-        return false;
+        if(coinAcceptor.getInsertedValue() >= stockKeeper.getCandyPrice()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public String getDisplayPrompt() {

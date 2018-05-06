@@ -34,6 +34,8 @@ public class VendingMachineControllerTest {
         assertTrue(vendingMachineController.selectPop());
         addQuartersToCoinAcceptor(2);
         assertTrue(vendingMachineController.selectChips());
+        addQuartersToCoinAcceptor(3);
+        assertTrue(vendingMachineController.selectCandy());
     }
 
 }
