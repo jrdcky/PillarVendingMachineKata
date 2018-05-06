@@ -43,4 +43,8 @@ public class CoinAcceptor {
     public void clearStagedCoins() {
         stagedCoins.clear();
     }
+
+    public void setInsertedValue(double insertedValue) {
+        this.insertedValue = insertedValue;
+    }
 }

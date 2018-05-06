@@ -75,4 +75,11 @@ public class VendingMachineControllerTest {
         assertEquals("$0.25", vendingMachineController.getDisplayPrompt());
     }
 
+    @Test
+    public void afterChangeRequestedThenDisplayShowsInsertCoin() {
+        addCoinsToCoinAcceptor(1, Coin.QUARTER);
+        vendingMachineController.returnCoins();
+        assertEquals(Display.INSERT_COIN, vendingMachineController.getDisplayPrompt());
+    }
+
 }
