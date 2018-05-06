@@ -9,48 +9,42 @@ public class StockKeeper {
         this.candy = candy;
     }
 
-    public boolean isPopInStock() {
-        if (pop >= 1){
+    public boolean isProductInStock(Product product) {
+        switch (product) {
+            case POP:
+                if(pop >= 1) {
+                    return true;
+                }
+                break;
+            case CHIPS:
+                if(chips >= 1) {
+                    return true;
+                }
+                break;
+            case CANDY:
+                if(candy >= 1) {
+                    return true;
+                }
+                break;
+        }
+        return false;
+    }
+
+    public boolean buyProduct(Product product) {
+        if (isProductInStock(product)) {
+            switch (product) {
+                case POP:
+                    pop -= 1;
+                    break;
+                case CHIPS:
+                    chips -= 1;
+                    break;
+                case CANDY:
+                    candy -= 1;
+            }
             return true;
         }
         return false;
     }
 
-    public boolean isChipsInStock() {
-        if (chips >= 1){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isCandyInStock() {
-        if (candy >= 1){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean buyPop() {
-        if (isPopInStock()) {
-            pop -= 1;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean buyCandy() {
-        if (isCandyInStock()) {
-            candy -= 1;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean buyChips() {
-        if (isChipsInStock()) {
-            chips -= 1;
-            return true;
-        }
-        return false;
-    }
 }
