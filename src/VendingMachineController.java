@@ -15,18 +15,7 @@ public class VendingMachineController {
     }
 
     public boolean selectProduct(Product product) {
-        double price = 0;
-        switch (product) {
-            case POP:
-                price = stockKeeper.getPopPrice();
-                break;
-            case CANDY:
-                price = stockKeeper.getCandyPrice();
-                break;
-            case CHIPS:
-                price = stockKeeper.getChipsPrice();
-                break;
-        }
+        double price = product.getPrice();
 
         display.selectProduct(price);
         if(coinAcceptor.getInsertedValue() >= price) {
