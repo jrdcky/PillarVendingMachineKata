@@ -36,5 +36,6 @@ public class DisplayTest {
     public void getPromptNoCoinsAfterProductSelectedEqualsPrice() {
         display.selectProduct(1.00);
         assertEquals("$1.00", display.getPrompt(0));
+        assertEquals(Display.INSERT_COIN, display.getPrompt(0));
     }
 }

@@ -20,7 +20,9 @@ public class Display {
             return EXACT_CHANGE_ONLY;
         }
         else if(selectedProductPrice != 0) {
-            return formatDoubleToString(selectedProductPrice);
+            String result = formatDoubleToString(selectedProductPrice);
+            selectedProductPrice = 0;
+            return result;
         }
         else {
             return INSERT_COIN;
