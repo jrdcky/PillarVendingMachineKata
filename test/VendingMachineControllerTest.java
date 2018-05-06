@@ -10,6 +10,7 @@ public class VendingMachineControllerTest {
         assertFalse(vendingMachineController.selectPop());
         assertEquals("$1.00", vendingMachineController.getDisplayPrompt());
         assertFalse(vendingMachineController.selectChips());
+        assertEquals("$0.50", vendingMachineController.getDisplayPrompt());
     }
 
 }
