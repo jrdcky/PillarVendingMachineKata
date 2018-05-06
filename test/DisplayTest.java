@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class DisplayTest {
 
-    Display display;
+    private Display display;
 
     @Before
     public void setUp() {
@@ -30,5 +30,11 @@ public class DisplayTest {
     public void getPromptNoCoinsExactChangeDisplayExactChange() {
         display.setRequireExactChange(true);
         assertEquals(Display.EXACT_CHANGE_ONLY, display.getPrompt(0));
+    }
+
+    @Test
+    public void getPromptNoCoinsAfterProductSelectedEqualsPrice() {
+        display.selectProduct(1.00);
+        assertEquals("$1.00", display.getPrompt(0));
     }
 }
