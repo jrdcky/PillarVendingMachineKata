@@ -2,6 +2,7 @@ import java.util.List;
 
 public class VendingMachineController {
 
+    public enum Product {POP, CHIPS, CANDY;}
     private Display display;
     private StockKeeper stockKeeper;
     private CoinAcceptor coinAcceptor;
@@ -14,31 +15,23 @@ public class VendingMachineController {
         stockKeeper = new StockKeeper(10, 10, 10);
     }
 
-    public boolean selectPop() {
-        double price = stockKeeper.getPopPrice();
+    public boolean selectProduct(Product product) {
+        double price = 0;
+        switch (product) {
+            case POP:
+                price = stockKeeper.getPopPrice();
+                break;
+            case CANDY:
+                price = stockKeeper.getCandyPrice();
+                break;
+            case CHIPS:
+                price = stockKeeper.getChipsPrice();
+                break;
+        }
+
         display.selectProduct(price);
         if(coinAcceptor.getInsertedValue() >= price) {
             coinAcceptor.subtractValue(price);
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public boolean selectChips() {
-        display.selectProduct(stockKeeper.getChipsPrice());
-        if(coinAcceptor.getInsertedValue() >= stockKeeper.getChipsPrice()) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public boolean selectCandy() {
-        display.selectProduct(stockKeeper.getCandyPrice());
-        if(coinAcceptor.getInsertedValue() >= stockKeeper.getCandyPrice()) {
             return true;
         }
         else {
