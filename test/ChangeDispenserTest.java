@@ -23,7 +23,7 @@ public class ChangeDispenserTest {
     }
 
     @Test
-    public void inserted75CentsDispense25CentsReturnsTwoQuarters() {
+    public void inserted75CentsDispense25CentsReturnsOneQuarter() {
         addQuartersToCoinAcceptor(3);
         changeDispenser = new ChangeDispenser(coinAcceptor);
         List<Coin> changeExpected = new ArrayList<>();
@@ -34,12 +34,14 @@ public class ChangeDispenserTest {
     }
 
     @Test
-    public void inserted50CentsDispense75CentsReturnsEmpty() {
+    public void inserted50CentsDispense75CentsReturnsTwoQuarters() {
         addQuartersToCoinAcceptor(2);
         changeDispenser = new ChangeDispenser(coinAcceptor);
+        List<Coin> changeExpected = new ArrayList<>();
+        changeExpected.add(Coin.QUARTER);
+        changeExpected.add(Coin.QUARTER);
         List<Coin> changeDispensed = changeDispenser.dispenseChange(.75);
-
-        assertTrue(changeDispensed.isEmpty());
+        assertTrue(changeExpected.equals(changeDispensed));
     }
 
     @Test

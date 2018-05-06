@@ -41,6 +41,10 @@ public class VendingMachineController {
         }
     }
 
+    public void returnCoins() {
+            returnSlot.addAll(changeDispenser.dispenseChange(coinAcceptor.getInsertedValue()));
+    }
+
     public List<Coin> getCoinsFromReturnSlot() {
         return returnSlot;
     }

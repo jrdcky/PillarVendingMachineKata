@@ -14,9 +14,9 @@ public class VendingMachineControllerTest {
         vendingMachineController = new VendingMachineController();
     }
 
-    private void addQuartersToCoinAcceptor(int quarters) {
-        for (int i = 0; i < quarters; i++) {
-            vendingMachineController.insertCoin(Coin.QUARTER);
+    private void addCoinsToCoinAcceptor(int number, Coin coin) {
+        for (int i = 0; i < number; i++) {
+            vendingMachineController.insertCoin(coin);
         }
     }
 
@@ -32,17 +32,17 @@ public class VendingMachineControllerTest {
 
     @Test
     public void selectProductWithEnoughMoneyReturnsTrue() {
-        addQuartersToCoinAcceptor(4);
+        addCoinsToCoinAcceptor(4, Coin.QUARTER);
         assertTrue(vendingMachineController.selectProduct(Product.POP));
-        addQuartersToCoinAcceptor(2);
+        addCoinsToCoinAcceptor(4, Coin.QUARTER);
         assertTrue(vendingMachineController.selectProduct(Product.CHIPS));
-        addQuartersToCoinAcceptor(3);
+        addCoinsToCoinAcceptor(4, Coin.QUARTER);
         assertTrue(vendingMachineController.selectProduct(Product.CANDY));
     }
 
     @Test
     public void selectProductWithMoreThanEnoughMoneyReturnsChange() {
-        addQuartersToCoinAcceptor(5);
+        addCoinsToCoinAcceptor(5, Coin.QUARTER);
         assertTrue(vendingMachineController.selectProduct(Product.POP));
         List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
         assertEquals(1, changeCollected.size());
@@ -56,6 +56,17 @@ public class VendingMachineControllerTest {
         List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
         assertEquals(1, changeCollected.size());
         assertEquals(badCoin, changeCollected.get(0));
+    }
+
+    @Test
+    public void testReturnCoinsGivesBackSameCoins() {
+        addCoinsToCoinAcceptor(3, Coin.QUARTER);
+        addCoinsToCoinAcceptor(2, Coin.DIME);
+        addCoinsToCoinAcceptor(1, Coin.NICKEL);
+        vendingMachineController.returnCoins();
+        List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
+        assertEquals(6, changeCollected.size());
+        assertTrue(changeCollected.contains(Coin.NICKEL));
     }
 
 }

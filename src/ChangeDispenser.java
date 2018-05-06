@@ -9,12 +9,19 @@ public class ChangeDispenser {
     }
 
     public List<Coin> dispenseChange(double amount) {
-        ArrayList<Coin> change = new ArrayList<>();
+        List<Coin> change = new ArrayList<>(coinAcceptor.getStagedCoins());
         if (amount > coinAcceptor.getInsertedValue()) {
+            coinAcceptor.clearStagedCoins();
             return change;
         }
-
-        return coinsToReturn(amount, change);
+        else if (amount == coinAcceptor.getInsertedValue() && !change.isEmpty()) {
+            coinAcceptor.clearStagedCoins();
+            return change;
+        }
+        else {
+            change.clear();
+            return coinsToReturn(amount, change);
+        }
     }
 
     private List<Coin> coinsToReturn(double amount, List<Coin> change) {
