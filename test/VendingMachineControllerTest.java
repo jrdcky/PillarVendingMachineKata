@@ -12,8 +12,8 @@ public class VendingMachineControllerTest {
 
     @Before
     public void setUp() {
-        vendingMachineController = new VendingMachineController(10, 10, 10);
-        outOfStockController = new VendingMachineController(0, 0, 0);
+        vendingMachineController = new VendingMachineController(10, 10, 10, 100, 100, 100);
+        outOfStockController = new VendingMachineController(0, 0, 0, 2, 0, 1);
     }
 
     private void addCoinsToCoinAcceptor(VendingMachineController vhc, int number, Coin coin) {
@@ -88,6 +88,11 @@ public class VendingMachineControllerTest {
         addCoinsToCoinAcceptor(vendingMachineController, 1, Coin.QUARTER);
         vendingMachineController.returnCoins();
         assertEquals(Display.INSERT_COIN, vendingMachineController.getDisplayPrompt());
+    }
+
+    @Test
+    public void lowChangeThenDisplayShowsExactChangeOnly() {
+        assertEquals(Display.EXACT_CHANGE_ONLY, outOfStockController.getDisplayPrompt());
     }
 
 }

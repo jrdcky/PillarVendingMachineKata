@@ -9,10 +9,10 @@ public class VendingMachineController {
     private CoinAcceptor coinAcceptor;
     private ChangeDispenser changeDispenser;
 
-    public VendingMachineController(int pop, int chips, int candy) {
+    public VendingMachineController(int pop, int chips, int candy, int quarters, int dimes, int nickels) {
         returnSlot = new ArrayList<>();
         display = new Display(false);
-        coinAcceptor = new CoinAcceptor(100, 100, 100);
+        coinAcceptor = new CoinAcceptor(quarters, dimes, nickels);
         changeDispenser = new ChangeDispenser(coinAcceptor);
         stockKeeper = new StockKeeper(pop, chips, candy);
     }
@@ -31,6 +31,7 @@ public class VendingMachineController {
     }
 
     public String getDisplayPrompt() {
+        display.setRequireExactChange(coinAcceptor.getNeedExactChange());
         return display.getPrompt(coinAcceptor.getInsertedValue());
     }
 
