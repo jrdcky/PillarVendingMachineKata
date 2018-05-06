@@ -9,12 +9,12 @@ public class VendingMachineController {
     private CoinAcceptor coinAcceptor;
     private ChangeDispenser changeDispenser;
 
-    public VendingMachineController() {
+    public VendingMachineController(int pop, int chips, int candy) {
         returnSlot = new ArrayList<>();
         display = new Display(false);
         coinAcceptor = new CoinAcceptor();
         changeDispenser = new ChangeDispenser(coinAcceptor);
-        stockKeeper = new StockKeeper(10, 10, 10);
+        stockKeeper = new StockKeeper(pop, chips, candy);
     }
 
     public boolean selectProduct(Product product) {

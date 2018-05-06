@@ -1,6 +1,8 @@
 public class Display {
     static final String INSERT_COIN = "INSERT COIN";
     static final String EXACT_CHANGE_ONLY = "EXACT CHANGE ONLY";
+    static final String OUT_OF_STOCK = "OUT OF STOCK";
+
     private boolean requireExactChange;
     private double selectedProductPrice;
 
