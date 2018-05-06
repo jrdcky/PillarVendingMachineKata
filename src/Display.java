@@ -4,6 +4,7 @@ public class Display {
     static final String OUT_OF_STOCK = "OUT OF STOCK";
 
     private boolean requireExactChange;
+    private boolean outOfStock = false;
     private double selectedProductPrice;
 
     public Display(boolean requireExactChange) {
@@ -13,6 +14,10 @@ public class Display {
     public String getPrompt(double amountInserted) {
         if(amountInserted == 0) {
             return getPromptNoMoneyInserted();
+        }
+        if(outOfStock) {
+            setOutOfStock(false);
+            return OUT_OF_STOCK;
         }
         return formatDoubleToString(amountInserted);
     }
@@ -48,6 +53,10 @@ public class Display {
             result += "0";
         }
         return "$" + result;
+    }
+
+    public void setOutOfStock(boolean outOfStock) {
+        this.outOfStock = outOfStock;
     }
 
 }

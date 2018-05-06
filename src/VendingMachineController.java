@@ -19,9 +19,8 @@ public class VendingMachineController {
 
     public boolean selectProduct(Product product) {
         double price = product.getPrice();
-
         display.selectProduct(price);
-        if(coinAcceptor.getInsertedValue() >= price) {
+        if(coinAcceptor.getInsertedValue() >= price && checkStock(product)) {
             coinAcceptor.subtractValue(price);
             returnSlot.addAll(changeDispenser.dispenseChange(coinAcceptor.getInsertedValue()));
             return true;
@@ -48,6 +47,17 @@ public class VendingMachineController {
 
     public List<Coin> getCoinsFromReturnSlot() {
         return returnSlot;
+    }
+
+    private boolean checkStock(Product product) {
+        if (stockKeeper.isProductInStock(product)){
+            display.setOutOfStock(false);
+            return true;
+        }
+        else {
+            display.setOutOfStock(true);
+            return false;
+        }
     }
 
 }
