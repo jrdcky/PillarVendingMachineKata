@@ -51,6 +51,11 @@ public class VendingMachineControllerTest {
 
     @Test
     public void insertBadCoinGetsReturned() {
+        Coin badCoin = new Coin(1, .5, .006);
+        vendingMachineController.insertCoin(badCoin);
+        List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
+        assertEquals(1, changeCollected.size());
+        assertEquals(badCoin, changeCollected.get(0));
     }
 
 }
