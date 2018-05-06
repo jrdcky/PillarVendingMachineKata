@@ -53,7 +53,7 @@ public class VendingMachineControllerTest {
 
     @Test
     public void selectProductOutOfStockReturnsFalse() {
-        addCoinsToCoinAcceptor(outOfStockController, 3, Coin.QUARTER);
+        addCoinsToCoinAcceptor(outOfStockController, 5, Coin.QUARTER);
         assertFalse(outOfStockController.selectProduct(Product.POP));
     }
 
