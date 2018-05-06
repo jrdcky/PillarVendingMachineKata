@@ -28,4 +28,8 @@ public class CoinAcceptor {
     public double getInsertedValue() {
         return insertedValue;
     }
+
+    public void subtractValue(double value) {
+        insertedValue -= value;
+    }
 }

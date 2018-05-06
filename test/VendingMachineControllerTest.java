@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class VendingMachineControllerTest {
@@ -36,6 +38,15 @@ public class VendingMachineControllerTest {
         assertTrue(vendingMachineController.selectChips());
         addQuartersToCoinAcceptor(3);
         assertTrue(vendingMachineController.selectCandy());
+    }
+
+    @Test
+    public void selectProductWithMoreThanEnoughMoneyReturnsChange() {
+        addQuartersToCoinAcceptor(5);
+        assertTrue(vendingMachineController.selectPop());
+        List<Coin> changeCollected = vendingMachineController.getCoinsFromReturnSlot();
+        assertEquals(1, changeCollected.size());
+        assertEquals(Coin.QUARTER, changeCollected.get(0));
     }
 
 }
