@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CoinAcceptor {
+    private static final double MAX_INSERTED_AMOUNT = 2.0;
+    private static final double CHEAPEST_PRODUCT_PRICE = Product.CHIPS.getPrice();
     private double insertedValue = 0;
     private List<Coin> stagedCoins = new ArrayList<>();
     private int quarters;
@@ -58,6 +60,23 @@ public class CoinAcceptor {
     }
 
     public boolean getNeedExactChange() {
+        if(totalMoneyInMachine() <  MAX_INSERTED_AMOUNT - CHEAPEST_PRODUCT_PRICE) {
+            return true;
+        }
         return false;
+    }
+
+    private double totalMoneyInMachine() {
+        double totalAmount = 0;
+        for(int i = 0; i < quarters; i++){
+            totalAmount += .25;
+        }
+        for(int i = 0; i < dimes; i++){
+            totalAmount += .10;
+        }
+        for(int i = 0; i < nickels; i++){
+            totalAmount += .05;
+        }
+        return totalAmount;
     }
 }

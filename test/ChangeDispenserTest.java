@@ -8,8 +8,8 @@ import static junit.framework.TestCase.assertTrue;
 
 public class ChangeDispenserTest {
 
-    CoinAcceptor coinAcceptor;
-    ChangeDispenser changeDispenser;
+    private CoinAcceptor coinAcceptor;
+    private ChangeDispenser changeDispenser;
 
     @Before
     public void setUp() {

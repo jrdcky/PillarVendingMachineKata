@@ -8,10 +8,12 @@ import static org.junit.Assert.assertFalse;
 public class CoinAcceptorTest {
 
     private CoinAcceptor coinAcceptor;
+    private CoinAcceptor lowCoinAcceptor;
 
     @Before
     public void setUp() {
         coinAcceptor = new CoinAcceptor(100, 100, 100);
+        lowCoinAcceptor = new CoinAcceptor(1, 1, 0);
     }
 
     @Test
@@ -42,6 +44,11 @@ public class CoinAcceptorTest {
     @Test
     public void whenNotLowOnChangeThenDoNotNeedExactChange() {
         assertFalse(coinAcceptor.getNeedExactChange());
+    }
+
+    @Test
+    public void whenLowOnChangeThenNeedExactChange() {
+        assertTrue(lowCoinAcceptor.getNeedExactChange());
     }
 
 }
